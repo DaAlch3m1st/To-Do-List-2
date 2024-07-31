@@ -1,0 +1,56 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+button {
+    width: 4em;
+}
+
+.modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #111111bd;
+    display: flex;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .3s;
+}
+
+.modal--show {
+    opacity: 1;
+    transition: opacity .3s;
+    pointer-events: unset;
+}
+
+.modal_btn {
+    color: #fff;
+    background-color: #f26250;
+}
+
+.modal_container, form {
+    margin: auto;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90%;
+    border-radius: 6px;
+    padding: 3em 2.5em;
+    background-color: #fff;
+    /* display: grid; */
+    display: flex;
+    place-items: center;
+    flex-direction: column;
+    gap: 1em;
+    /* place-items: center;
+    grid-auto-columns: 100%; */
+}
+
+/* form, h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
