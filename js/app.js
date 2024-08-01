@@ -1,21 +1,60 @@
 const addTaskBtn = document.getElementById('addTaskBtn');
 const modal = document.getElementById('modal');
+const liContainer = document.getElementById('list');
+
+function createDeleteBtn() {
+    const button = document.createElement('button');
+    const icon = document.createElement('i');
+    button.append(icon);
+    icon.className = 'fa-solid fa-trash';
+
+    return button;
+}
+
+function createDoneBtn() {
+    const button = document.createElement('button');
+    const icon = document.createElement('i');
+    button.append(icon);
+    icon.className = 'fa-solid fa-check';
+
+    return button;
+}
+
 
 function createTask() {
     const input = document.getElementById('inputTask'); 
     const inputValue = input.value.trim();
+    const para = document.getElementById('para');
 
     if (inputValue != '') {
-        const li = document.createElement('li');
+        let li = document.createElement('li');
         li.classList.add('tasks');
-        const liContainer = document.getElementById('list');
+        const deleteBtn = createDeleteBtn();
+        const doneBtn = createDoneBtn();
+        
+        deleteBtn.addEventListener('click', function() {
+            li.remove();
+        });
+        doneBtn.addEventListener('click', function() {
+            li.style.textDecoration = 'line-through'
+        })
     
         li.append(inputValue);
+        
+        li.append(deleteBtn);
+
+        li.append(doneBtn);
         liContainer.appendChild(li);
+        
+        para.classList.add('para-added')
+        para.textContent = 'Added task'
+
+
+        
         input.value = '';
         return true;
     } else {
-        const para = document.getElementById('para');
+        para.classList.add('para-error')
         para.textContent = 'Invalid input'
         return false;
     }
