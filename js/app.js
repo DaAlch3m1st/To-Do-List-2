@@ -6,6 +6,9 @@ const modalEdit = document.getElementById('modalEdit');
 const taskEditInput = document.getElementById('editInput');
 const saveTaskBtn = document.getElementById('saveTaskBtn');
 
+const darkModeBtn = document.getElementById('toggleDarkMode');
+const lightModeBtn = document.getElementById('toggleLightMode');
+
 // Load tasks from local storage when the page loads
 loadTasks();
 
@@ -59,6 +62,10 @@ function closeModal() {
 function createTask(taskDescription) {
     const inputValue = taskDescription ? taskDescription.trim() : document.getElementById('taskInput').value.trim();
     const para = document.getElementById('para');
+    const doneAudio = new Audio();
+    const removeAudio = new Audio();
+    doneAudio.src = './audios/done.wav';
+    removeAudio.src = './audios/remove.wav';
 
     if (inputValue !== '') {
         let li = document.createElement('li');
@@ -69,12 +76,14 @@ function createTask(taskDescription) {
         const editBtn = createEditBtn();
         
         deleteBtn.addEventListener('click', function() {
+            removeAudio.play();
             li.remove();
             saveTasks();
         });
 
         doneBtn.addEventListener('click', function() {
-            li.style.textDecoration = 'line-through';
+            doneAudio.play();
+            li.remove();
             saveTasks();
         });
 
@@ -134,8 +143,53 @@ function loadTasks() {
 }
 
 function toggleDarkMode() {
+    lightModeBtn.classList.add('toggle--hide');
 
+    // dark mode
+    darkModeBtn.addEventListener('click', function() {
+        lightModeBtn.classList.add('toggle--show');
+        darkModeBtn.classList.add('toggle--hide');
+        document.body.classList.add('body-dark');
+        document.querySelectorAll('.modal-container').forEach(modals => {
+            modals.classList.add('modal-dark');
+        });
+        document.querySelectorAll('.form-container').forEach(modals => {
+            modals.classList.add('modal-dark');
+        });
+        document.querySelectorAll('.secondary-text-dark').forEach(text => {
+            text.classList.add('secondary-text-dark1');
+        })
+        document.querySelectorAll('li').forEach(taskText => {
+            taskText.classList.add('secondary-text-dark1');
+        })
+        saveTasks();
+        return;
+    })
+
+    // light mode 
+    lightModeBtn.addEventListener('click', function() {
+        lightModeBtn.classList.remove('toggle--show');
+        darkModeBtn.classList.remove('toggle--hide');
+        document.body.classList.remove('body-dark');
+        document.querySelectorAll('.modal-container').forEach(modals => {
+            modals.classList.remove('modal-dark');
+        });
+        document.querySelectorAll('.form-container').forEach(modals => {
+            modals.classList.remove('modal-dark');
+        });
+        document.querySelectorAll('.secondary-text-dark').forEach(text => {
+            text.classList.remove('secondary-text-dark1');
+        })
+        document.querySelectorAll('li').forEach(taskText => {
+            taskText.classList.remove('secondary-text-dark1');
+        })
+        saveTasks();
+        return;
+    })
+    saveTasks()
 }
+
+toggleDarkMode();
 
 function app() {
     openModal();

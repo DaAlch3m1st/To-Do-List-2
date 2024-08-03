@@ -9,54 +9,62 @@
     <title>To-do List</title>
 </head>
 <body>
-    
-    <div class="container" id="container">
+    <main>
+    <h1 class="title secondary-text-dark">To-do app</h1>
+    <a class="toggle" id="toggleDarkMode" style="cursor: pointer;"><i class="fa-solid fa-sun"></i></a>
+    <a class="toggle" id="toggleLightMode" style="cursor: pointer;"><i class="fa-regular fa-sun"></i></a>
+        <div class="container" id="container">
 
-        <!-- <input type="text" placeholder="Add Your Task" id=""> -->
-        <button id="openModalBtn" type="submit"><span>Add Your Task</span></button>
-            <a id="toggleDarkMode" style="cursor: pointer;"><i class="fa-solid fa-sun"></i></a>
-        <!-- <i class="fa-regular fa-sun"></i> when you toggle of mode -->
+            <!-- <input type="text" placeholder="Add Your Task" id=""> -->
+            <button class="add-task-btn" id="openModalBtn" type="submit">
+                <span class="btn-text">Add Your Task</span>
+            </button>
 
-        <section class="form-tasks popup modal" id="modal">
-            <div class="modal_container">
-                <h1 id="modalHeader">Add your task</h1>
-                <form action="" class="form overlay" id="form-modal">
-                    <label for="taskInput">Add your task</label>
-                    <input type="text" id="taskInput">
-                    <p class="para-display" id="para"></p>
+            <section class="form-tasks popup modal" id="modal">
+                <div class="modal-container">
+                    <h1 id="modalHeader" class="secondary-text-dark">Add your task</h1>
+                    <form action="" class="form overlay form-container" id="form-modal">
+                        <label for="taskInput" class="secondary-text-dark">Add your task</label>
+                        <input type="text" id="taskInput" class="input-task">
+                        <label for="descriptionInput">Add the description for your task (later)</label>
+                        <input type="text" id="descriptionInput"  class="input-task">
+                        <p class="para-display secondary-text-dark" id="para"></p>
 
-                    <!-- <label for="date"></label>
-                    <select type="text"></select> -->
+                        <!-- <label for="date"></label>
+                        <select type="text"></select> -->
 
-                    <button id="addTaskBtn" type="button">Add your task</button>
-                    <button id="closeModalBtn" class="modal_btn" type="button">Close the modal</button>
-                </form>
-            </div>
-        </section>
+                        <button id="addTaskBtn" class="modal-btn add-task" type="button">Add your task</button>
+                        <button id="closeModalBtn" class="modal-btn close-modal-btn" type="button">Close the modal</button>
+                    </form>
+                </div>
+            </section>
 
-        <div class="containerTask" id="tasks">
-            <ul class="to-do-list" id="list">
-                
-            </ul>
+            <!-- <div class="containerTask" id="tasks"> -->
+                <ul class="to-do-list" id="list">
+                    
+                </ul>
+            <!-- </div> -->
+
+            <section class="form-tasks popup modal" id="modalEdit">
+                <div class="modal-container">
+                    <h1 class="secondary-text-dark" id="editTitle">Edit your task</h1>
+                    <form action="" class="form overlay form-container" id="formEditTask">
+                        <label for="editInput" class="secondary-text-dark">Edit your task</label>
+                        <input type="text"id="editInput" class="input-task" >
+                        <p class="description secondary-text-dark" id="descriptionPara"></p>
+            
+                        <button id="saveTaskBtn" class="modal-btn add-task" type="button">
+                            <span class="btn-text">Save Task</span>
+                        </button>
+                        <button id="closeModalEditBtn" class="modal-btn close-modal-btn" type="button">Cancel</button>
+                    </form>
+                </div>
+            </section>
+                <!-- <div class="">
+                <ul id="doneList"></ul>
+            </div> -->
         </div>
-
-        <section class="form-tasks popup modal" id="modalEdit">
-            <div class="modal_container">
-                <h1 id="editTitle">Edit your task</h1>
-                <form action="" class="form overlay" id="formEditTask">
-                    <label for="editInput">Edit your task</label>
-                    <input type="text" id="editInput">
-                    <p class="description" id="descriptionPara"></p>
-        
-                    <button id="saveTaskBtn" type="button">Save Task</button>
-                    <button id="closeModalEditBtn" class="modal_btn" type="button">Cancel</button>
-                </form>
-            </div>
-        </section>
-              <!-- <div class="">
-            <ul id="doneList"></ul>
-        </div> -->
-    </div>
+    </main>
     <script src="./js/app.js"></script>
 </body>
 </html>
