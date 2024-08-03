@@ -59,3 +59,9 @@ button {
 .para-error {
     color: red;
 }
+
+#toggleDarkMode {
+    display: flex;
+    justify-content: end;
+    font-size: 32px;
+}

@@ -11,15 +11,18 @@
 <body>
     
     <div class="container" id="container">
+
         <!-- <input type="text" placeholder="Add Your Task" id=""> -->
         <button id="openModalBtn" type="submit"><span>Add Your Task</span></button>
+            <a id="toggleDarkMode" style="cursor: pointer;"><i class="fa-solid fa-sun"></i></a>
+        <!-- <i class="fa-regular fa-sun"></i> when you toggle of mode -->
 
         <section class="form-tasks popup modal" id="modal">
             <div class="modal_container">
-                <h1>Add your task</h1>
+                <h1 id="modalHeader">Add your task</h1>
                 <form action="" class="form overlay" id="form-modal">
-                    <label for="inputTask">Add your task</label>
-                    <input type="text" id="inputTask">
+                    <label for="taskInput">Add your task</label>
+                    <input type="text" id="taskInput">
                     <p class="para-display" id="para"></p>
 
                     <!-- <label for="date"></label>
@@ -36,7 +39,21 @@
                 
             </ul>
         </div>
-        <!-- <div class="">
+
+        <section class="form-tasks popup modal" id="modalEdit">
+            <div class="modal_container">
+                <h1 id="editTitle">Edit your task</h1>
+                <form action="" class="form overlay" id="formEditTask">
+                    <label for="editInput">Edit your task</label>
+                    <input type="text" id="editInput">
+                    <p class="description" id="descriptionPara"></p>
+        
+                    <button id="saveTaskBtn" type="button">Save Task</button>
+                    <button id="closeModalEditBtn" class="modal_btn" type="button">Cancel</button>
+                </form>
+            </div>
+        </section>
+              <!-- <div class="">
             <ul id="doneList"></ul>
         </div> -->
     </div>
